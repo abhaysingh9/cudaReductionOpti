@@ -42,7 +42,7 @@ __global__ void reduction(float *out, float *in, unsigned size)
         if(t < stride)
             partialSum[t] += partialSum[t+stride];
     }
-   
+    __syncthreads();
     out[blockIdx.x] =  partialSum[0];
 
 }
